@@ -261,4 +261,4 @@ def create_target(shape, alpha, shape_color, alpha_color, orientation, size):
         orientation=rand.randint(0,355)
     im = im.rotate(orientation)
 
-    return np.asarray(im)
+    return im

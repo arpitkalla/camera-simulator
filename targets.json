@@ -5,8 +5,8 @@
         "shape_color" : "white",
         "alpha_color" : "black",
         "orientation" : 180,
-        "lat": 100,
-        "lon": 110,
+        "lat": 0,
+        "lon": 0,
         "size": 3
 	},
 	{
@@ -15,8 +15,8 @@
         "shape_color" : "blue",
         "alpha_color" : "red",
         "orientation" : 90,
-        "lat": 90,
-        "lon": 80,
-        "size": 3
+        "lat": 10,
+        "lon": 20,
+        "size": 4
 	}
 ]

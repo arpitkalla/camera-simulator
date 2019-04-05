@@ -8,14 +8,17 @@ class Target():
         self.lon = lon
         self.size = size
         self.param = param
+        self.target_img = None
 
     def create(self, width, height):
-        self.target_img = generator.create_target(shape=self.param["shape"],
-                                        alpha=self.param["alpha"],
-                                        shape_color=self.param["shape_color"],
-                                        alpha_color=self.param["alpha_color"],
-                                        orientation=self.param["orientation"],
-                                        size=(width, height))
+        if self.target_img is None:
+            self.target_img = generator.create_target(shape=self.param["shape"],
+                                            alpha=self.param["alpha"],
+                                            shape_color=self.param["shape_color"],
+                                            alpha_color=self.param["alpha_color"],
+                                            orientation=self.param["orientation"],
+                                            size=(width, height))
+        return self.target_img
 
     def _show(self):
         assert not self.target_img is None
@@ -25,7 +28,7 @@ class Target():
     
     def __lt__(t1, t2):
         return t1.size < t2.size
-        
+
     def __gt__(t1, t2):
         return t1.size > t2.size
     
