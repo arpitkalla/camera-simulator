@@ -58,8 +58,8 @@ class Controller():
         pixel_per_latlon = target_size/targets[0].size
         width, height = right - left, top - bottom
         points[:,0] -= left
-        points[:,1] += top
-
+        points[:,1] -= bottom
+        print(points)
         width *= pixel_per_latlon
         height *= pixel_per_latlon
         points*= pixel_per_latlon
@@ -75,8 +75,9 @@ class Controller():
         ground_pts = util.get_points(self.x, self.y, self.z, 
                                      self.roll, self.pitch, self.yaw, 
                                      self.fov_x, self.fov_y)
-
+        print(ground_pts)
         im, flag = self.generate_image(ground_pts)
+        print(ground_pts)
         plt.imshow(im)
         plt.plot(ground_pts[:,0], ground_pts[:,1], "-")
         plt.plot(ground_pts[0,0], ground_pts[0,1], "ro")
