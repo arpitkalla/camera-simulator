@@ -30,7 +30,7 @@ class Controller():
         self.roll, self.pitch, self.yaw = 0.0, 0.0, 0.0
 
         # Image resolution
-        self.width, self.height = 200, 100
+        self.width, self.height = 2000, 1000
 
         # Camera Setting
         self.fov_x = 78 * np.pi / 180
@@ -58,12 +58,11 @@ class Controller():
         pixel_per_latlon = target_size/targets[0].size
         width, height = right - left, top - bottom
         points[:,0] -= left
-        points[:,1] -= top
+        points[:,1] += top
 
         width *= pixel_per_latlon
         height *= pixel_per_latlon
         points*= pixel_per_latlon
-        
         img = Image.new('RGBA', (int(width), int(height)), color)
         for t in targets:
             offset = (int((t.lon - left)*pixel_per_latlon), int((t.lat - bottom)*pixel_per_latlon))
@@ -78,7 +77,6 @@ class Controller():
                                      self.fov_x, self.fov_y)
 
         im, flag = self.generate_image(ground_pts)
-
         plt.imshow(im)
         plt.plot(ground_pts[:,0], ground_pts[:,1], "-")
         plt.plot(ground_pts[0,0], ground_pts[0,1], "ro")
