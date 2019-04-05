@@ -9,17 +9,28 @@ class Target():
         self.size = size
         self.param = param
 
-    def create(self, size):
+    def create(self, width, height):
         self.target_img = generator.create_target(shape=self.param["shape"],
                                         alpha=self.param["alpha"],
                                         shape_color=self.param["shape_color"],
                                         alpha_color=self.param["alpha_color"],
                                         orientation=self.param["orientation"],
-                                        size=size)
+                                        size=(width, height))
 
     def _show(self):
+        assert not self.target_img is None
         plt.imshow(self.target_img)
         plt.show()
+
+    
+    def __lt__(t1, t2):
+        return t1.size < t2.size
+        
+    def __gt__(t1, t2):
+        return t1.size > t2.size
+    
+
+
 
 
 if __name__ == "__main__":
